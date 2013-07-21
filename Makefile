@@ -1,4 +1,4 @@
-CFLAGS =-Wall -g -Os 
+CFLAGS =-Wall -g -Os
 CC = gcc 
 OBJECTS = fibonacci.c sequence.c
 OUT = fibonacci

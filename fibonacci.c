@@ -8,6 +8,7 @@ int sequenceToN(int n);
 int nInSequence(int n);
 int checkIfNumberOnly(char *s); 
 int printOption();
+
 int main(int argc, char *argv[]){
     int c;
 	char *n1 = NULL;
@@ -45,7 +46,7 @@ int main(int argc, char *argv[]){
 	}
 	// check of we have too many arugments.
 	if(argumentCount > 1){
-		fprintf (stderr, "ERROR: Too many arugments.\n");
+		fprintf (stderr, "ERROR: Too many or Invalid arugments.\n");
 		printOption();
 		return 0;
 	}
@@ -54,27 +55,22 @@ int main(int argc, char *argv[]){
 		fprintf (stderr, "ERROR : Not enough arguments. \n");
 		printOption();
 		return 0;
-	} else if((aopt == 0 && bopt == 0)){
-		fprintf (stderr, "ERROR : You must specify an option \n");
-		printOption();
-		return 0;
 	}
 	else if((aopt == 1 && bopt == 1) && n1 != NULL){
 		fprintf (stderr, "ERROR : -a and -b cannot be used at the same time \n");
 		printOption();
 		return 0;
 	} else {
-		//We want to check whether arugment of -n only contains numbers
+		//We want to check whether arugment of <number> only contains positive numbers
 		if(checkIfNumberOnly(n1) == 0){
-			fprintf (stderr, "ERROR : -n can only contain Positive numbers");
-			return 0;
+			fprintf (stderr, "ERROR : <number> can only contain positive numbers");
 		}  else {
 			// Converts into integer.
 			n = atoi(n1);
 			// check for options 
 			if (aopt == 1){
 				nInSequence(n);
-			} else if (bopt == 1){
+			} else {
 				sequenceToN(n);
 			}				
 		}
